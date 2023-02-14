@@ -13,7 +13,7 @@ namespace Mission06_yiywu.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
-        //Get
+       
         private MovieFormContext _movieFormContext {get;set;}   
         //constructor
         public HomeController(ILogger<HomeController> logger, MovieFormContext movieFormContext)
