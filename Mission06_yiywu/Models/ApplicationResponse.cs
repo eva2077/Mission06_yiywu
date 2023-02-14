@@ -5,6 +5,7 @@ namespace Mission06_yiywu.Models
 {
     public class ApplicationResponse
     {
+        //Ensure that requirments for the forms are being met
         [Key]
         [Required]
         public int MovieId { get; set; }

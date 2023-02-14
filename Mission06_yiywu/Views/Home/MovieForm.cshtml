@@ -8,7 +8,7 @@
 Link to the application response in models to get the type of the form*@
 @model Mission06_yiywu.Models.ApplicationResponse
 
-
+@*form to let user input into*@
 <h1>Fill Out Movie Form</h1>
 <div>
     <form method="post">
@@ -51,6 +51,7 @@ Link to the application response in models to get the type of the form*@
         <input asp-for="Notes" maxlength="25" />
         <br />
         <br />
+      @*  button to allow user to submit*@
         <button type="submit">Submit Application</button>
 
     </form>

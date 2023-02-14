@@ -10,6 +10,8 @@ namespace Mission06_yiywu.Models
 
         }
         public DbSet<ApplicationResponse> ApplicationResponse { get; set; }
+
+        //seed database with three of my favorite movies 
         protected override void OnModelCreating(ModelBuilder mb)
         {
             mb.Entity<ApplicationResponse>().HasData(
