@@ -8,7 +8,7 @@ using Mission06_yiywu.Models;
 namespace Mission06_yiywu.Migrations
 {
     [DbContext(typeof(MovieFormContext))]
-    [Migration("20230214040204_Initial")]
+    [Migration("20230214042204_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
