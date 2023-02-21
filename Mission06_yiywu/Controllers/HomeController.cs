@@ -32,8 +32,9 @@ namespace Mission06_yiywu.Controllers
         {
             
             ViewBag.Category = _movieFormContext.Category.ToList();
+            return View("MovieForm", new ApplicationResponse());
 
-            return View();
+            
         }
         //Post the info on the form to store in database
         [HttpPost]
@@ -68,6 +69,25 @@ namespace Mission06_yiywu.Controllers
             .OrderBy(x => x.Category)
             .ToList();
             return View(applications);
+        }
+        [HttpGet]
+        public IActionResult Edit(int id)
+        {
+            ViewBag.Category = _movieFormContext.Category.ToList();
+            var application = _movieFormContext.ApplicationResponse.Single(x => x.MovieId == id);
+            return View("MovieForm",application);
+            
+        }
+        [HttpPost]
+        public IActionResult Edit(ApplicationResponse change)
+        {
+            _movieFormContext.Update(change);
+            _movieFormContext.SaveChanges();
+            return RedirectToAction("MovieList");
+        }
+        public IActionResult Delete()
+        {
+            return View();
         }
     }
 }
