@@ -12,18 +12,17 @@ namespace Mission06_yiywu.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
-       
         private MovieFormContext _movieFormContext {get;set;}   
         //constructor
-        public HomeController(ILogger<HomeController> logger, MovieFormContext movieFormContext)
+        public HomeController(MovieFormContext movieFormContext)
         {
-            _logger = logger;
+            
             _movieFormContext = movieFormContext;
         }
 
         public IActionResult Index()
         {
+            
             return View();
         }
 
@@ -31,6 +30,9 @@ namespace Mission06_yiywu.Controllers
         [HttpGet]
         public IActionResult MovieForm()
         {
+            
+            ViewBag.Category = _movieFormContext.Category.ToList();
+
             return View();
         }
         //Post the info on the form to store in database
@@ -56,6 +58,16 @@ namespace Mission06_yiywu.Controllers
         public IActionResult MyPodcasts()
         {
             return View();
+        }
+        // alow users to see the movie list 
+        [HttpGet]
+        public IActionResult MovieList()
+        {
+            var applications = _movieFormContext.ApplicationResponse
+            .Include(x => x.Category)
+            .OrderBy(x => x.Category)
+            .ToList();
+            return View(applications);
         }
     }
 }

@@ -1,5 +1,5 @@
 ﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+   
 *@
 @{
     ViewData["Title"] = "Movie Form";
@@ -12,9 +12,16 @@ Link to the application response in models to get the type of the form*@
 <h1>Fill Out Movie Form</h1>
 <div>
     <form method="post">
-
-        <label asp-for="Category"> Category </label>
-        <input asp-for="Category"  />
+        <br />
+        <label asp-for="CategoryId">Category</label>
+        <select asp-for="CategoryId"required>
+            <option value="">Select a Category</option>
+            @foreach (Category c in ViewBag.Category)
+            {
+                <option value="@c.CategoryId">@c.CategoryName</option>
+            }
+        </select>
+        <br />
         <br />
         <label asp-for="Title">Title</label>
         <input asp-for="Title"  />
