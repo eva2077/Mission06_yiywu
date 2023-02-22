@@ -9,7 +9,10 @@ namespace Mission06_yiywu.Models
             //Leave Blank for Now 
 
         }
+        //References to the ApplicationResponse.cs to get info
         public DbSet<ApplicationResponse> ApplicationResponse { get; set; }
+
+        //References to the category.cs to get info
         public DbSet<Category>Category{ get; set; }
         //seed database with three of my favorite movies 
         protected override void OnModelCreating(ModelBuilder mb)

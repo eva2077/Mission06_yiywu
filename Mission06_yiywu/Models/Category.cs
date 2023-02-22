@@ -2,6 +2,7 @@
 
 namespace Mission06_yiywu.Models
 {
+    //Get info of the categories id and name
     public class Category
     {
         

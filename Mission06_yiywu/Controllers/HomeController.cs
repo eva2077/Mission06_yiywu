@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace Mission06_yiywu.Controllers
 {
@@ -49,6 +50,7 @@ namespace Mission06_yiywu.Controllers
             }
             else
             {
+                ViewBag.Category = _movieFormContext.Category.ToList();
                 return View();
             }
 
@@ -70,14 +72,20 @@ namespace Mission06_yiywu.Controllers
             .ToList();
             return View(applications);
         }
+
+        //Get info to edit
         [HttpGet]
         public IActionResult Edit(int id)
         {
+            //get list of categories possible
             ViewBag.Category = _movieFormContext.Category.ToList();
+            //populate with the right movie info based on id
             var application = _movieFormContext.ApplicationResponse.Single(x => x.MovieId == id);
+            //Take you to the form 
             return View("MovieForm",application);
             
         }
+        //post info of edit
         [HttpPost]
         public IActionResult Edit(ApplicationResponse change)
         {
@@ -85,9 +93,24 @@ namespace Mission06_yiywu.Controllers
             _movieFormContext.SaveChanges();
             return RedirectToAction("MovieList");
         }
-        public IActionResult Delete()
+
+        //Allow user to delete
+        [HttpGet]
+        public IActionResult Delete(int id)
         {
-            return View();
+            //get information of the movieId that will be deleted based on id
+            var application = _movieFormContext.ApplicationResponse.Single(x => x.MovieId == id);
+            return View(application);
+           
+        }
+        //Post deleted results 
+        [HttpPost]
+        public IActionResult Delete(ApplicationResponse ar) {
+
+            _movieFormContext.ApplicationResponse.Remove(ar);
+            _movieFormContext.SaveChanges();
+
+            return RedirectToAction("MovieList");
         }
     }
 }

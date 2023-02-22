@@ -15,7 +15,7 @@ namespace Mission06_yiywu.Models
         public string Title { get; set; }
 
         [Required]
-        public int Year { get; set; }
+        public int? Year { get; set; }
 
         [Required]
         public string Director { get; set; }

@@ -12,9 +12,11 @@ Link to the application response in models to get the type of the form*@
 <h1>Fill Out Movie Form</h1>
 <div>
     <form method="post">
+        <div asp-validation-summary="All"></div>
         <br />
         <label asp-for="CategoryId">Category</label>
-        <select asp-for="CategoryId"required>
+        @*create dropdown for the categories*@
+        <select asp-for="CategoryId">
             <option value="">Select a Category</option>
             @foreach (Category c in ViewBag.Category)
             {
